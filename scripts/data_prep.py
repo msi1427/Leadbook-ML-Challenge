@@ -7,7 +7,7 @@ parser.add_argument('--raw_dept_data', type=str, default='departments.json', hel
 args = parser.parse_args()
 
 def get_departments(root_dir: str, dept_data_file_name: str):
-    dept_data_file_path = root_dir + "data/" + dept_data_file_name
+    dept_data_file_path = f"{root_dir}data/{dept_data_file_name}"
     with open(dept_data_file_path, 'r') as fp:
         departments = fp.read()
     departments = (departments[1:-2]+",").split("\n")
@@ -49,10 +49,8 @@ if __name__ == "__main__" :
         phrase_list = preprocess_data(phrase_list)
         department_dict[key] = phrase_list
 
-    with open(root_dir + "data/" + f"{dept_data_file_name.split('.')[0]}_processed.json", 'w') as fp:
+    with open(f"{root_dir}data/{dept_data_file_name.split('.')[0]}_processed.json", 'w') as fp:
         json.dump(department_dict,fp)
     
     df = construct_train_data(department_dict)
-    df.to_csv(root_dir + "data/train.csv",index=False)
-
-    
+    df.to_csv(f"{root_dir}data/data/train.csv",index=False)
