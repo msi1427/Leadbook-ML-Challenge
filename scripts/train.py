@@ -8,14 +8,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--train_data', type=str, default='train.csv', help='')
 parser.add_argument('--gpu', type=int, default=0, help='')
 args = parser.parse_args()
-
 device=torch.device(f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu")
 
 if __name__ == "__main__" : 
     dept_data_file_name = args.train_data
     root_dir = os.path.dirname(os.path.abspath(__file__)) + "/../"
     
-    df = pd.read_csv(root_dir + "data/train.csv")
+    df = pd.read_csv(f"{root_dir}data/data/train.csv")
     train_df, valid_df = train_test_split(df, test_size=0.1, random_state=42)
 
     pretrained_models = ["all-MiniLM-L6-v2",           
@@ -42,6 +41,4 @@ if __name__ == "__main__" :
                     warmup_steps=100, 
                     evaluator=evaluator, 
                     evaluation_steps=500,
-                    output_path= f"{root_dir}/models/{model_name}/")
-
-    
+                    output_path= f"{root_dir}models/{model_name}/")
