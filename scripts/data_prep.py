@@ -1,5 +1,6 @@
 import os, ast, argparse, json
 import preprocessing
+import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--raw_dept_data', type=str, default='departments.json', help='')
@@ -22,6 +23,20 @@ def preprocess_data(phrase_list: list):
     phrase_list = preprocessing.lowercasing(phrase_list)
     return phrase_list
 
+def construct_train_data(department_dict : dict):
+    data = []
+
+    for key,phrase1_list in department_dict.items():
+        for rep_key,phrase2_list in department_dict.items():
+            score = 0.0
+            if key == rep_key : score = 0.9
+            else : score = 0.1
+            triplet_dict = [{"phrase1" : phrase1, "phrase2": phrase2, "score": score} for phrase1 in phrase1_list for phrase2 in phrase2_list if phrase1 != phrase2]
+            data.extend(triplet_dict)
+    
+    df = pd.DataFrame(data=data,columns=["phrase1","phrase2","score"])
+    return df
+
 if __name__ == "__main__" : 
     dept_data_file_name = args.raw_dept_data
     root_dir = os.path.dirname(os.path.abspath(__file__)) + "/../"
@@ -36,5 +51,8 @@ if __name__ == "__main__" :
 
     with open(root_dir + "data/" + f"{dept_data_file_name.split('.')[0]}_processed.json", 'w') as fp:
         json.dump(department_dict,fp)
-            
+    
+    df = construct_train_data(department_dict)
+    df.to_csv(root_dir + "data/train.csv",index=False)
+
     
