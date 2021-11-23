@@ -53,4 +53,4 @@ if __name__ == "__main__" :
         json.dump(department_dict,fp)
     
     df = construct_train_data(department_dict)
-    df.to_csv(f"{root_dir}data/data/train.csv",index=False)
+    df.to_csv(f"{root_dir}data/train.csv",index=False)
