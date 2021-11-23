@@ -54,3 +54,4 @@ if __name__ == "__main__" :
     
     df = construct_train_data(department_dict)
     df.to_csv(f"{root_dir}data/train.csv",index=False)
+    print("\nData Preparation Complete")

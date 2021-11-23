@@ -42,3 +42,5 @@ if __name__ == "__main__" :
                     evaluator=evaluator, 
                     evaluation_steps=500,
                     output_path= f"{root_dir}models/{model_name}/")
+
+    print("\nTraining Complete")

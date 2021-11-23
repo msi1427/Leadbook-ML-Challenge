@@ -90,9 +90,11 @@ if __name__ == "__main__" :
     queries = job_titles_processed
     corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)
 
+    print("Inference:")
     dept_prediction = get_dept_preds(queries,embedder,corpus_embeddings)
 
     pred_df = pd.DataFrame()
     pred_df["Job Titles"] = job_titles
     pred_df["Department Predictions"] = dept_prediction
     pred_df.to_csv(f"{root_dir}output/dept_preds.csv",index=False)
+    print("\nInference Complete")
