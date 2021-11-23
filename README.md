@@ -75,13 +75,13 @@ Example
    python scripts/inference.py
    ```
 
-   *If you want to provide a different test datafile with the same format of* `./data/train.csv`, *but a different name:*
+   *If you want to provide a different test datafile with the same format of* `./data/jobtitles_all.txt`, *but a different name:*
 
    ```bash
-   python scripts/inference.py --test_data <csv_file_name>
+   python scripts/inference.py --test_data <txt_file_name>
    ```
 
-   *If you want to provide a different department datafile with the same format of* `./data/departments_processed.csv`, *but a different name:*
+   *If you want to provide a different department datafile with the same format of* `./data/departments_processed.json`, *but a different name:*
 
    ```bash
    python scripts/inference.py --dept_data <json_file_name>
