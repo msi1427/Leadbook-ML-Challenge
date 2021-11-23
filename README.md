@@ -42,61 +42,61 @@ Example
 4. Prepare the data
 
    ```bash
-   py scripts/data_prep.py
+   python scripts/data_prep.py
    ```
 
    *If you want to provide a different datafile with the same format of* `./data/departments.json`, *but a different name:*
 
    ```bash
-   py scripts/data_prep.py --raw_dept_data <json_file_name>
+   python scripts/data_prep.py --raw_dept_data <json_file_name>
    ```
 
 5. Train the Phrase Similarity Model
 
    ```bash
-   py scripts/train.py
+   python scripts/train.py
    ```
 
    *If you want to provide a different datafile with the same format of* `./data/train.csv`, *but a different name:*
 
    ```bash
-   py scripts/train.py --train_data <csv_file_name>
+   python scripts/train.py --train_data <csv_file_name>
    ```
 
    *If you want to use a particular GPU for training:*
 
    ```bash
-   py scripts/train.py --gpu <gpu_index>
+   python scripts/train.py --gpu <gpu_index>
    ```
 
 6. Inference on trained models
 
    ```bash
-   py scripts/inference.py
+   python scripts/inference.py
    ```
 
    *If you want to provide a different test datafile with the same format of* `./data/train.csv`, *but a different name:*
 
    ```bash
-   py scripts/inference.py --test_data <csv_file_name>
+   python scripts/inference.py --test_data <csv_file_name>
    ```
 
    *If you want to provide a different department datafile with the same format of* `./data/departments_processed.csv`, *but a different name:*
 
    ```bash
-   py scripts/inference.py --dept_data <json_file_name>
+   python scripts/inference.py --dept_data <json_file_name>
    ```
 
    *If you want to use a particular GPU for training:*
 
    ```bash
-   py scripts/inference.py --gpu <gpu_index>
+   python scripts/inference.py --gpu <gpu_index>
    ```
 
    *I have trained 5 trained models. You can choose any of them for inference. By default, it will use 'paraphrase-MiniLM-L6-v2' model for inference.*
 
    ```bash
-   py scripts/inference.py --trained_model <model_name>
+   python scripts/inference.py --trained_model <model_name>
    ```
 
 ## Details
