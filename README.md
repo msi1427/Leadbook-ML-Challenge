@@ -160,8 +160,14 @@ Example
 - **Data Preprocessing:** There are a lot of noises in the `./data/jobtitles_all.txt` file. The preprocessing is done in 3 steps:
 
   1. The '/'s are replaced with 'or' and '&'s are replaced with 'and'.
+
   2. Remove all the punctuations.
+
   3. Remove all the noisy words. The noisy words I identified are the following:
+
+     ```
+     ["ceo ", "coo ", "cfo ", "cio ", "cmo ", "chro ", "cto ", "director ", "chief ", "president ", "vice president ", "vp ", "vice chair ", "board member ", "member ", "team member ", "team captain ", "owner ", "chairman ", "co - chair ", "co - chairman ", "senior "]
+     ```
 
 - **Loading the Models:** Since the trained models are of big size, they are currently stored in Google Drive. The models are automatically downloaded whenever specified. The default model is `paraphrase-MiniLM-L6-v2`. The corpus embeddings of department topics are generated. 
 
@@ -175,3 +181,6 @@ Example
 
 ## Possible Improvements:
 
+- An annotated job title data as test set might be a good way to improve the performance further because as I mentioned in the last section, I used the `top 20 phrases` and `>=0.5` similarity score for inference. Both of them were an educated guess from my previous experience. But an educated guess does not always ensure the results. An annotated set might help us tune these hyperparameters. 
+- I used some of the words as noisy words like ceo, director. This list of noisy words is also an educated guess and totally from my intuition. But, a comprehensive list by domain experts might give a better direction.
+- A more extensive list of department and their topics might give us a better result in the long run.
