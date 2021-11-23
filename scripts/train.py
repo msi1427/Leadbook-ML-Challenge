@@ -14,7 +14,7 @@ if __name__ == "__main__" :
     dept_data_file_name = args.train_data
     root_dir = os.path.dirname(os.path.abspath(__file__)) + "/../"
     
-    df = pd.read_csv(f"{root_dir}data/data/train.csv")
+    df = pd.read_csv(f"{root_dir}data/train.csv")
     train_df, valid_df = train_test_split(df, test_size=0.1, random_state=42)
 
     pretrained_models = ["all-MiniLM-L6-v2",           
