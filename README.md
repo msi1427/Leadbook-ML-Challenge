@@ -169,9 +169,9 @@ Example
 
   1. If all the words in the a job title is a noisy word, the title is ignored.
   2. If the job title is not English, the title is ignored. I used `polyglot` library to identify the language.
-  3. The top 20 phrases similar to the job title is selected. If they have `>=0.5` similarity score, the departments are taken into consideration and attributed to the job title.
+  3. The `top 20 phrases` similar to the job title is selected. If they have `>=0.5` similarity score, the departments are taken into consideration and attributed to the job title.
 
-  More about the output file is discussed [in the first section](## Output File).
+  More about the output file is discussed [in the first section](#output-file).
 
 ## Possible Improvements:
 
